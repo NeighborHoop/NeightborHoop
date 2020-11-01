@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(primaryColor: Colors.amber[900]),
+        theme: ThemeData(primaryColor: Colors.orange[800]),
         home: HomePage()
     );
   }
@@ -24,9 +24,45 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold (
-        appBar: AppBar(title: Text('NeighborHoop')),
-        body: NameCard()
+    return DefaultTabController(
+      length: 2, 
+      child:Scaffold (
+          appBar: AppBar(
+            title: Text('NeighborHoop'),
+            leading: IconButton(
+              icon: Icon(Icons.account_circle),
+              onPressed: (){},
+            ),
+            actions: <Widget>[
+              IconButton(
+                icon: const Icon(Icons.settings),
+                tooltip: 'Settings',
+                onPressed: (){}
+              )
+            ],
+            bottom: TabBar(
+              tabs: <Widget>[
+                Tab(
+                  text: "PROFILE",
+                ),
+                Tab(
+                  text: "RIVALRY"
+                )
+              ],
+            ),
+          ),
+          body: TabBarView(
+            children: <Widget>[
+              NameCard(),
+              NameCard(),
+            ]),
+          floatingActionButton: FloatingActionButton.extended(
+            onPressed: (){},
+            label: Text('Start Game!'),
+            backgroundColor: Colors.red,
+          ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      )
     );
   }
 }
