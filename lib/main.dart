@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
+import './profile.dart';
 
 void main() {
   runApp(MyApp());
@@ -31,13 +32,17 @@ class HomePageState extends State<HomePage> {
             title: Text('NeighborHoop'),
             leading: IconButton(
               icon: Icon(Icons.account_circle),
-              onPressed: (){},
+              onPressed: (){
+                print('avatar');
+              },
             ),
             actions: <Widget>[
               IconButton(
                 icon: const Icon(Icons.settings),
                 tooltip: 'Settings',
-                onPressed: (){}
+                onPressed: (){
+                  print('settings');
+                }
               )
             ],
             bottom: TabBar(
@@ -53,11 +58,13 @@ class HomePageState extends State<HomePage> {
           ),
           body: TabBarView(
             children: <Widget>[
-              NameCard(),
+              Profile(),
               NameCard(),
             ]),
           floatingActionButton: FloatingActionButton.extended(
-            onPressed: (){},
+            onPressed: (){
+              print('Start game!');
+            },
             label: Text('Start Game!'),
             backgroundColor: Colors.red,
           ),
