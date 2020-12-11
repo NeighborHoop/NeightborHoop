@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 import './profile.dart';
+import './avatar.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,9 +12,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(primaryColor: Colors.orange[800]),
-        home: HomePage()
-    );
+        theme: ThemeData(primaryColor: Colors.orange[800]), home: HomePage(),
+        routes: {
+          '/avatar': (_) => Avatar()
+        });
   }
 }
 
@@ -26,51 +28,49 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2, 
-      child:Scaffold (
+        length: 2,
+        child: Scaffold(
           appBar: AppBar(
             title: Text('NeighborHoop'),
             leading: IconButton(
               icon: Icon(Icons.account_circle),
-              onPressed: (){
-                print('avatar');
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                  '/avatar'
+                );
               },
             ),
             actions: <Widget>[
               IconButton(
-                icon: const Icon(Icons.settings),
-                tooltip: 'Settings',
-                onPressed: (){
-                  print('settings');
-                }
-              )
+                  icon: const Icon(Icons.settings),
+                  tooltip: 'Settings',
+                  onPressed: () {
+                    print('settings');
+                  })
             ],
             bottom: TabBar(
               tabs: <Widget>[
                 Tab(
                   text: "PROFILE",
                 ),
-                Tab(
-                  text: "RIVALRY"
-                )
+                Tab(text: "RIVALRY")
               ],
             ),
           ),
-          body: TabBarView(
-            children: <Widget>[
-              Profile(),
-              NameCard(),
-            ]),
+          body: TabBarView(children: <Widget>[
+            Profile(),
+            NameCard(),
+          ]),
           floatingActionButton: FloatingActionButton.extended(
-            onPressed: (){
+            onPressed: () {
               print('Start game!');
             },
             label: Text('Start Game!'),
             backgroundColor: Colors.red,
           ),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      )
-    );
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+        ));
   }
 }
 
@@ -98,4 +98,3 @@ class NameCardState extends State<NameCard> {
     );
   }
 }
-
