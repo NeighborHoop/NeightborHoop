@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/semantics.dart';
+// import 'package:flutter/semantics.dart';
 import './profile.dart';
 import './avatar.dart';
+import './NameCard.dart';
+import './settings.dart';
 
 void main() {
   runApp(MyApp());
@@ -35,18 +37,23 @@ class HomePageState extends State<HomePage> {
             leading: IconButton(
               icon: Icon(Icons.account_circle),
               onPressed: () {
-                Navigator.of(context).pushNamed(
-                  '/avatar'
-                );
+                Navigator.push(
+                      context, 
+                      // MaterialPageRoute(builder: (context) => Avatar()),
+                      SlideRightRoute(page: Avatar())
+                    );
               },
             ),
             actions: <Widget>[
               IconButton(
                   icon: const Icon(Icons.settings),
-                  tooltip: 'Settings',
                   onPressed: () {
-                    print('settings');
-                  })
+                    Navigator.push(
+                      context, 
+                      // MaterialPageRoute(builder: (context) => Settings()),
+                      SlideLeftRoute(page: Settings())
+                    );
+                  },)
             ],
             bottom: TabBar(
               tabs: <Widget>[
@@ -74,27 +81,54 @@ class HomePageState extends State<HomePage> {
   }
 }
 
-class NameCard extends StatefulWidget {
-  @override
-  NameCardState createState() => NameCardState();
+class SlideRightRoute extends PageRouteBuilder {
+  final Widget page;
+  SlideRightRoute({this.page})
+      : super(
+          pageBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+          ) =>
+              page,
+          transitionsBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+            Widget child,
+          ) =>
+              SlideTransition(
+                position: Tween<Offset>(
+                  begin: const Offset(-1, 0),
+                  end: Offset.zero,
+                ).animate(animation),
+                child: child,
+              ),
+        );
 }
 
-class NameCardState extends State<NameCard> {
-  Widget build(BuildContext context) {
-    return Center(
-      child: Card(
-        child: InkWell(
-          splashColor: Colors.blue.withAlpha(30),
-          onTap: () {
-            print('Card tapped.');
-          },
-          child: Container(
-            width: 300,
-            height: 100,
-            child: Text('Phil the hooper'),
-          ),
-        ),
-      ),
-    );
-  }
+class SlideLeftRoute extends PageRouteBuilder {
+  final Widget page;
+  SlideLeftRoute({this.page})
+      : super(
+          pageBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+          ) =>
+              page,
+          transitionsBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+            Widget child,
+          ) =>
+              SlideTransition(
+                position: Tween<Offset>(
+                  begin: const Offset(1, 0),
+                  end: Offset.zero,
+                ).animate(animation),
+                child: child,
+              ),
+        );
 }

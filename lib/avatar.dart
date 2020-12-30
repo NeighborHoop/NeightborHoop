@@ -12,14 +12,7 @@ class AvatarState extends State<Avatar> {
         length: 1,
         child: Scaffold(
           appBar: AppBar(
-            title: Text('NeighborHoop'),
-            bottom: TabBar(
-              tabs: <Widget>[
-                Tab(
-                  text: "PLAYER PROFILE",
-                ),
-              ],
-            ),
+            title: Text('PLAYER PROFILE'),
           ),
           body: TabBarView(children: <Widget>[
             PlayerProfile(),
@@ -37,47 +30,49 @@ class PlayerProfileState extends State<PlayerProfile> {
   String name = "Billy";
   String email = "123@gmail.com";
   String number = "123456789";
+  String location = "Ontario, Canada";
   Widget build(BuildContext context) {
     return ListView(padding: const EdgeInsets.all(20), children: <Widget>[
       ListTile(
+        leading: Icon(Icons.account_circle),
         title: Text('$name'),
-        subtitle: Text('Name'),
         tileColor: Colors.amber[600],
-        onTap: () => setState(() {
-          name = "Phil";
-          print(name);
-        }),
-        trailing: IconButton(
-            icon: const Icon(Icons.settings),
-            tooltip: 'Change Name',
-            onPressed: () {
-              setState(() {
-                name = "Billy";
-              });
-            }),
+        // trailing: IconButton(
+        //     icon: const Icon(Icons.settings),
+        //     tooltip: 'Change Name',
+        //     onPressed: () {
+        //       setState(() {
+        //         name = "Billy";
+        //       });
+        //     }),
       ),
       ListTile(
-        title: Text('${email}'),
-        subtitle: Text('Email'),
+        leading: Icon(Icons.mail),
+        title: Text('$email'),
         tileColor: Colors.amber[600],
-        trailing: IconButton(
-            icon: const Icon(Icons.settings),
-            tooltip: 'Change Email',
-            onPressed: () {
-              print('setemail');
-            }),
+        // trailing: IconButton(
+        //     icon: const Icon(Icons.settings),
+        //     tooltip: 'Change Email',
+        //     onPressed: () {
+        //       print('setemail');
+        //     }),
       ),
       ListTile(
-        title: Text('${number}'),
-        subtitle: Text('Phone Number'),
+        leading: Icon(Icons.phone),
+        title: Text('$number'),
         tileColor: Colors.amber[600],
-        trailing: IconButton(
-            icon: const Icon(Icons.settings),
-            tooltip: 'Change Phone Number',
-            onPressed: () {
-              print('setnumber');
-            }),
+        // trailing: IconButton(
+        //     icon: const Icon(Icons.settings),
+        //     tooltip: 'Change Phone Number',
+        //     onPressed: () {
+        //       print('setnumber');
+        //     }),
       ),
+      ListTile(
+        leading: Icon(Icons.pin_drop),
+        title: Text('$location'),
+        tileColor: Colors.amber[600],
+      )
     ]);
   }
 }
