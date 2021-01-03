@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/semantics.dart';
 import './profile.dart';
 import './avatar.dart';
-import './NameCard.dart';
+import './Rivalry.dart';
 import './settings.dart';
+import './Start.dart';
 
 void main() {
   runApp(MyApp());
@@ -57,20 +58,22 @@ class HomePageState extends State<HomePage> {
             ],
             bottom: TabBar(
               tabs: <Widget>[
-                Tab(
-                  text: "PROFILE",
-                ),
+                Tab(text: "PROFILE"),
                 Tab(text: "RIVALRY")
               ],
             ),
           ),
           body: TabBarView(children: <Widget>[
             Profile(),
-            NameCard(),
+            Rivalry(),
           ]),
           floatingActionButton: FloatingActionButton.extended(
             onPressed: () {
-              print('Start game!');
+              Navigator.push(
+                context, 
+                // MaterialPageRoute(builder: (context) => Settings()),
+                ScaleRoute(page: Start())
+              );
             },
             label: Text('Start Game!'),
             backgroundColor: Colors.red,
@@ -128,6 +131,37 @@ class SlideLeftRoute extends PageRouteBuilder {
                   begin: const Offset(1, 0),
                   end: Offset.zero,
                 ).animate(animation),
+                child: child,
+              ),
+        );
+}
+
+class ScaleRoute extends PageRouteBuilder {
+  final Widget page;
+  ScaleRoute({this.page})
+      : super(
+          pageBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+          ) =>
+              page,
+          transitionsBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+            Widget child,
+          ) =>
+              ScaleTransition(
+                scale: Tween<double>(
+                  begin: 0.0,
+                  end: 1.0,
+                ).animate(
+                  CurvedAnimation(
+                    parent: animation,
+                    curve: Curves.fastOutSlowIn,
+                  ),
+                ),
                 child: child,
               ),
         );
