@@ -5,6 +5,7 @@ import './avatar.dart';
 import './Rivalry.dart';
 import './settings.dart';
 import './Start.dart';
+import './slide_animation.dart';
 
 void main() {
   runApp(MyApp());
@@ -84,85 +85,3 @@ class HomePageState extends State<HomePage> {
   }
 }
 
-class SlideRightRoute extends PageRouteBuilder {
-  final Widget page;
-  SlideRightRoute({this.page})
-      : super(
-          pageBuilder: (
-            BuildContext context,
-            Animation<double> animation,
-            Animation<double> secondaryAnimation,
-          ) =>
-              page,
-          transitionsBuilder: (
-            BuildContext context,
-            Animation<double> animation,
-            Animation<double> secondaryAnimation,
-            Widget child,
-          ) =>
-              SlideTransition(
-                position: Tween<Offset>(
-                  begin: const Offset(-1, 0),
-                  end: Offset.zero,
-                ).animate(animation),
-                child: child,
-              ),
-        );
-}
-
-class SlideLeftRoute extends PageRouteBuilder {
-  final Widget page;
-  SlideLeftRoute({this.page})
-      : super(
-          pageBuilder: (
-            BuildContext context,
-            Animation<double> animation,
-            Animation<double> secondaryAnimation,
-          ) =>
-              page,
-          transitionsBuilder: (
-            BuildContext context,
-            Animation<double> animation,
-            Animation<double> secondaryAnimation,
-            Widget child,
-          ) =>
-              SlideTransition(
-                position: Tween<Offset>(
-                  begin: const Offset(1, 0),
-                  end: Offset.zero,
-                ).animate(animation),
-                child: child,
-              ),
-        );
-}
-
-class ScaleRoute extends PageRouteBuilder {
-  final Widget page;
-  ScaleRoute({this.page})
-      : super(
-          pageBuilder: (
-            BuildContext context,
-            Animation<double> animation,
-            Animation<double> secondaryAnimation,
-          ) =>
-              page,
-          transitionsBuilder: (
-            BuildContext context,
-            Animation<double> animation,
-            Animation<double> secondaryAnimation,
-            Widget child,
-          ) =>
-              ScaleTransition(
-                scale: Tween<double>(
-                  begin: 0.0,
-                  end: 1.0,
-                ).animate(
-                  CurvedAnimation(
-                    parent: animation,
-                    curve: Curves.fastOutSlowIn,
-                  ),
-                ),
-                child: child,
-              ),
-        );
-}

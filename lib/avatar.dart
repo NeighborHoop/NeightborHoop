@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import './slide_animation.dart';
+import './FriendList.dart';
 
 class Avatar extends StatefulWidget {
   @override
@@ -37,41 +39,33 @@ class PlayerProfileState extends State<PlayerProfile> {
         leading: Icon(Icons.account_circle),
         title: Text('$name'),
         tileColor: Colors.amber[600],
-        // trailing: IconButton(
-        //     icon: const Icon(Icons.settings),
-        //     tooltip: 'Change Name',
-        //     onPressed: () {
-        //       setState(() {
-        //         name = "Billy";
-        //       });
-        //     }),
       ),
       ListTile(
         leading: Icon(Icons.mail),
         title: Text('$email'),
         tileColor: Colors.amber[600],
-        // trailing: IconButton(
-        //     icon: const Icon(Icons.settings),
-        //     tooltip: 'Change Email',
-        //     onPressed: () {
-        //       print('setemail');
-        //     }),
       ),
       ListTile(
         leading: Icon(Icons.phone),
         title: Text('$number'),
         tileColor: Colors.amber[600],
-        // trailing: IconButton(
-        //     icon: const Icon(Icons.settings),
-        //     tooltip: 'Change Phone Number',
-        //     onPressed: () {
-        //       print('setnumber');
-        //     }),
       ),
       ListTile(
         leading: Icon(Icons.pin_drop),
         title: Text('$location'),
         tileColor: Colors.amber[600],
+      ),
+      ListTile(
+        leading: Icon(Icons.list),
+        title: Text('Friends'),
+        tileColor: Colors.amber[600],
+        onTap: (){
+          Navigator.push(
+            context, 
+            // MaterialPageRoute(builder: (context) => Settings()),
+            ScaleRoute(page: FriendList())
+          );
+        },
       )
     ]);
   }
