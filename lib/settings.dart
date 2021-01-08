@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './SharedData.dart';
 
 class Settings extends StatefulWidget {
   @override
@@ -27,10 +28,10 @@ class SettingControl extends StatefulWidget {
 }
 
 class SettingControlState extends State<SettingControl> {
-  String name = "Billy";
-  String location = "The Collegeway, Mississauga, CA";
-  String email = "123@gmail.com";
-  String number = "123456789";
+  // String name = "Billy";
+  // String location = "The Collegeway, Mississauga, CA";
+  // String email = "123@gmail.com";
+  // String number = "123456789";
   
   final myController = TextEditingController();
   @override
@@ -44,7 +45,7 @@ class SettingControlState extends State<SettingControl> {
     return ListView(padding: const EdgeInsets.all(20), children: <Widget>[
       ListTile(
         leading: Icon(Icons.account_circle),
-        title: new Text('$name'),
+        title: new Text(Billy.name),
         tileColor: Colors.amber[600],
         trailing: IconButton(
             icon: const Icon(Icons.settings),
@@ -65,7 +66,7 @@ class SettingControlState extends State<SettingControl> {
                       child: Text('Change'),
                       onPressed: () {
                         setState(() {
-                          name = myController.text;
+                          Billy.name = myController.text;
                         });
                         Navigator.pop(context);
                       },
@@ -77,7 +78,7 @@ class SettingControlState extends State<SettingControl> {
       ),
       ListTile(
         leading: Icon(Icons.pin_drop),
-        title: new Text('$location'),
+        title: new Text(Billy.location),
         tileColor: Colors.amber[600],
         trailing: IconButton(
             icon: const Icon(Icons.settings),
@@ -98,7 +99,7 @@ class SettingControlState extends State<SettingControl> {
                       child: Text('Change'),
                       onPressed: () {
                         setState(() {
-                          location = myController.text;
+                          Billy.location = myController.text;
                         });
                         Navigator.pop(context);
                       },
@@ -110,7 +111,7 @@ class SettingControlState extends State<SettingControl> {
       ),
       ListTile(
         leading: Icon(Icons.mail),
-        title: new Text('$email'),
+        title: new Text(Billy.email),
         tileColor: Colors.amber[600],
         trailing: IconButton(
             icon: const Icon(Icons.settings),
@@ -131,7 +132,7 @@ class SettingControlState extends State<SettingControl> {
                       child: Text('Change'),
                       onPressed: () {
                         setState(() {
-                          email = myController.text;
+                          Billy.email = myController.text;
                         });
                         Navigator.pop(context);
                       },
@@ -143,7 +144,7 @@ class SettingControlState extends State<SettingControl> {
       ),
       ListTile(
         leading: Icon(Icons.phone),
-        title: new Text('$number'),
+        title: new Text(Billy.phone),
         tileColor: Colors.amber[600],
         trailing: IconButton(
             icon: const Icon(Icons.settings),
@@ -164,7 +165,7 @@ class SettingControlState extends State<SettingControl> {
                       child: Text('Change'),
                       onPressed: () {
                         setState(() {
-                          number = myController.text;
+                          Billy.phone = myController.text;
                         });
                         Navigator.pop(context);
                       },

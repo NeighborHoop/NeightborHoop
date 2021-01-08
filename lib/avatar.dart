@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './slide_animation.dart';
 import './FriendList.dart';
+import './SharedData.dart';
 
 class Avatar extends StatefulWidget {
   @override
@@ -29,30 +30,30 @@ class PlayerProfile extends StatefulWidget {
 }
 
 class PlayerProfileState extends State<PlayerProfile> {
-  String name = "Billy";
-  String email = "123@gmail.com";
-  String number = "123456789";
-  String location = "Ontario, Canada";
+  // String name = "Billy";
+  // String email = "123@gmail.com";
+  // String number = "123456789";
+  // String location = "Ontario, Canada";
   Widget build(BuildContext context) {
     return ListView(padding: const EdgeInsets.all(20), children: <Widget>[
       ListTile(
         leading: Icon(Icons.account_circle),
-        title: Text('$name'),
+        title: Text(Billy.name),
         tileColor: Colors.amber[600],
       ),
       ListTile(
         leading: Icon(Icons.mail),
-        title: Text('$email'),
+        title: Text(Billy.email),
         tileColor: Colors.amber[600],
       ),
       ListTile(
         leading: Icon(Icons.phone),
-        title: Text('$number'),
+        title: Text(Billy.phone),
         tileColor: Colors.amber[600],
       ),
       ListTile(
         leading: Icon(Icons.pin_drop),
-        title: Text('$location'),
+        title: Text(Billy.location),
         tileColor: Colors.amber[600],
       ),
       ListTile(

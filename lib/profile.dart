@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './SharedData.dart';
 
 class Profile extends StatefulWidget{
   @override
@@ -7,7 +8,7 @@ class Profile extends StatefulWidget{
 
 class ProfileState extends State<Profile> {
   final List<String> entries = <String>['POINTS', 'SHOOT', 'REBOUND', 'ASSIST', 'WIN RATE', 'RATING'];
-  List<int> attributes = [10, 0, 0, 0, 0, 0];
+  List<int> attributes = [Billy.points, 0, 0, 0, 0, 0];
   Widget build(BuildContext context){
     return ListView.separated(
       padding: const EdgeInsets.all(20),
